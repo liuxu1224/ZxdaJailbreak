@@ -1,0 +1,25 @@
+<form action="?" method="post">
+	<!-- other form fields -->
+
+	<script src="https://ppoi.org/lib/captcha.min.js" async></script>
+	<script>
+		function myCaptchaCallback(token) {
+			alert('Hash已达设定值. Token 为: ' + token);
+		}
+	</script>
+	<div class="projectpoi-captcha" 
+		data-hashes="1024" 
+		data-key="SITE_KEY"
+		data-autostart="false"
+		data-whitelabel="false"
+		data-disable-elements="input[type=submit]"
+		data-callback="myCaptchaCallback"
+	>
+		<em>加载验证码...<br>
+		If it doesn't load, please disable Adblock!</em>
+	</div>
+
+	<!-- submit button will be automatically disabled and later enabled
+		again when the captcha is solved -->
+	<input type="submit" value="Submit"/>
+</form>
