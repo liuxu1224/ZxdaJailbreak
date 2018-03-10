@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-cn">
+<!--本自定义验证码显示由MarikoAsian修改-->
+<!--邮箱；marikov@qq.com-->
+<!--此Web 挖矿未修改官方源地址: https://ppoi.org/  -->
+<!--谢谢使用,此文件注释您若有念可以删除-->
+<head>
+<title>验证码赚钱XMR货币 - PPIO</title>
+<link rel="stylesheet" type="text/css" href="https://ppoi.org/captcha/captcha.css" />
+<script type="text/javascript" src="https://ppoi.org/lib/projectpoi.min.js"></script>
+<script type="text/javascript" src="https://ppoi.org/captcha/captcha-ui.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="projectpoi captcha" />
+<link rel="icon" type="image/png" href="https://ppoi.org/View/Tpl/media/icon.png">
+<link rel="apple-touch-icon" href="https://ppoi.org/View/Tpl/media/icon.png">
+</head>
+<body>
+<div class="verify-me-container column column-main" id="verify-me-container">
+<div class="verify-me-progress" id="verify-me" role="checkbox">
+<div class="progress" id="verify-me-progress"></div>
+</div>
+<div class="verify-me-text">Click to verify</div><!--未验证时标题-->
+</div>
+<div class="verified-container column column-main" id="verified-container">
+<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+<circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+<path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+</svg>
+<div class="verified-text">Verify success</div><!--已验证标题-->
+</div>
+<div class="error-container column column-main" id="error-container">
+<svg class="exclamation" id="exclamation" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 20 20">
+<circle cx="11" cy="-1041.36" r="8" transform="matrix(1 0 0-1 0-1030.36)" opacity=".98" fill="#da4453" />
+<path d="m-26.309 18.07c-1.18 0-2.135.968-2.135 2.129v12.82c0 1.176.948 2.129 2.135 2.129 1.183 0 2.135-.968 2.135-2.129v-12.82c0-1.176-.946-2.129-2.135-2.129zm0 21.348c-1.18 0-2.135.954-2.135 2.135 0 1.18.954 2.135 2.135 2.135 1.181 0 2.135-.954 2.135-2.135 0-1.18-.952-2.135-2.135-2.135z" transform="matrix(.30056 0 0 .30056 18.902 1.728)" fill="#fff" stroke="#fff" />
+</svg>
+<div class="error-text">
+<span id="error-text">Unknown error</span> <!--出错时报错语-->
+<a href="#" onclick="window.location.reload(true);">Refresh|刷新</a> <!--报错时刷新超链接-->
+</div>
+</div>
+<div class="projectpoi-captcha column column-aside" id="projectpoi-label">
+<h1>
+<!-------------------------为维护作者版权------------------------------->
+<!--显示 的ICO图标-->    <img src="https://ppoi.org/View/Tpl/media/icon.png" class="icon" alt="" />ProjectPoi</h1><!--显示的项目名称-->
+                         <a class="help" href="https://ppoi.org/info/captcha-help" target="_blank">这是什么?</a><!--项目源超链接-->
+<!-------------------------这里请不要修改------------------------------->
+</div>
+<div class="slow-warning" id="slow-warning">
+<a class="help warn" href="http://www.google.cn/chrome/browser/desktop/index.html" target="_blank"> <!--检测到用户验证慢时给予的温馨提示-->
+慢？升级浏览器！
+</a>
+</div>
+<script type="text/javascript">
+	var key = ProjectPoi.CaptchaUI.queryParam('key');
+	var goal = parseInt(ProjectPoi.CaptchaUI.queryParam('goal'), 10) || 1024;
+	var whiteLabel = parseInt(ProjectPoi.CaptchaUI.queryParam('whitelabel'));
+
+	if (whiteLabel) {
+		document.getElementById('projectpoi-label').style.display = 'none';
+		document.getElementById('verify-me-container').style.width = '250px';
+		document.getElementById('error-container').style.width = 'auto';
+	}
+
+	var captcha = new ProjectPoi.CaptchaUI(key, goal, {
+		start: 'verify-me',
+		container: 'verify-me-container',
+		progress: 'verify-me-progress',
+		verifiedContainer: 'verified-container',
+		errorContainer: 'error-container',
+		errorText: 'error-text',
+		exclamation: 'exclamation',
+		slowWarning: 'slow-warning'
+	});
+
+	if (parseInt(ProjectPoi.CaptchaUI.queryParam('autostart'), 10)) {
+		captcha.start();
+	}
+</script>
+</body>
+</html>
